@@ -1,87 +1,106 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../provider/AuthProvider";
+import axios from "axios";
+import { toast } from "react-toastify";
 
+const image_hosting_key = import.meta.env.VITE_image_Hosting_key;
+const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateProfile = () => {
-  const { user, updateUserProfile } = useContext(Context); // Access context values
+  const { user, updateUserProfile } = useContext(Context);
   const [name, setName] = useState(user?.displayName || "");
-  const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
 
-    if (!name.trim() || !photoURL.trim()) {
-      setError("Both fields are required!");
+    if (!name.trim()) {
+      setError("Name is required!");
       return;
     }
 
-    try {
-      // Update the user's profile
-      await updateUserProfile(user, { displayName: name, photoURL });
+    if (!file) {
+      setError("Please select an image file!");
+      return;
+    }
 
-      setSuccess("Profile updated successfully!");
-      setError("");
-      setTimeout(() => {
-        navigate("/dashboard"); // Redirect to Dashboard after successful update
-      }, 2000);
+    setError("");
+    setSuccess("");
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const res = await axios.post(image_hosting_API, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      if (res.data.success) {
+        const newPhotoURL = res.data.data.display_url;
+
+        await updateUserProfile(user, { displayName: name, photoURL: newPhotoURL });
+        setSuccess("Profile updated successfully!");
+        setTimeout(() => navigate("/"), 1000);
+      }
     } catch (err) {
-      setError(err.message);
-      setSuccess("");
+      console.error("Error uploading image:", err);
+      setError("There was an error uploading your image. Please try again.");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="max-w-lg w-full bg-white shadow-md rounded-lg p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-blue-600 text-center">
-          Update Your Profile
-        </h1>
-        <form onSubmit={handleUpdateProfile} className="space-y-4">
-          {error && (
-            <p className="text-red-500 text-sm text-center">{error}</p>
-          )}
-          {success && (
-            <p className="text-green-500 text-sm text-center">{success}</p>
-          )}
-          {/* Name Input */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text font-semibold">Name</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your name"
-              className="input input-bordered w-full"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          {/* Photo URL Input */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text font-semibold">Photo URL</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your photo URL"
-              className="input input-bordered w-full"
-              value={photoURL}
-              onChange={(e) => setPhotoURL(e.target.value)}
-              required
-            />
-          </div>
-          {/* Update Button */}
-          <button type="submit" className="btn btn-primary w-full">
-            Update Information
-          </button>
-        </form>
-      </div>
+    <div className="min-h-screen flex items-center justify-center  p-4">
+    <div className="max-w-lg w-full bg-blue-300 shadow-lg rounded-xl p-8 space-y-6">
+      <h1 className="text-3xl font-extrabold  text-center">
+        Update Your Profile
+      </h1>
+      <form onSubmit={handleUpdateProfile} className="space-y-6">
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+        {success && <p className="text-green-500 text-sm text-center">{success}</p>}
+  
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text text-lg font-bold  mb-3">Name</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            className="input input-bordered w-full p-3 rounded-md focus:ring-2 focus:ring-purple-600"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+  
+        <div>
+          <label className="label">
+            <span className="label-text text-lg font-bold  mb-3">Photo</span>
+          </label>
+          <span className="sr-only">Choose profile photo</span>
+          <input
+            type="file"
+            name="img"
+            required
+            onChange={handleFileChange}
+            className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-200 hover:file:bg-purple-300"
+          />
+        </div>
+  
+        <button type="submit" className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white w-full py-3 rounded-md hover:from-purple-600 hover:to-pink-600">
+          Update Information
+        </button>
+      </form>
     </div>
+  </div>
+  
   );
 };
 
