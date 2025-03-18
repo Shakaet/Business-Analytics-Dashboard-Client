@@ -67,7 +67,7 @@ const ManageUser = () => {
       <table className="table">
         {/* Head */}
         <thead>
-          <tr>
+          <tr className='text-black'>
             <th>Name</th>
             <th>Role</th>
             <th>Action</th>
@@ -77,7 +77,7 @@ const ManageUser = () => {
         {/* Body */}
         <tbody>
           {users.map((user) => (
-            <tr key={user._id}>
+            <tr key={user._id} className='text-black'>
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">

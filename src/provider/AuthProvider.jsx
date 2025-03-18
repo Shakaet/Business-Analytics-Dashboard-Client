@@ -11,6 +11,8 @@ const AuthProvider = ({children}) => {
     let [user,setUser]=useState(null)
     const [loading,setLoading] = useState(true);
 
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
     const provider = new GoogleAuthProvider();
     let googleSign=()=>{
  
@@ -53,6 +55,25 @@ const AuthProvider = ({children}) => {
                 
               });
           },[])
+
+          
+
+  // Toggle Theme Function
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  // Apply Theme to <html> class
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
     
         let val= {
              createRegistered,
@@ -61,7 +82,9 @@ const AuthProvider = ({children}) => {
              googleSign,
              updateUserProfile,
              user,
-             loading
+             loading,
+             theme,
+             toggleTheme
     
         }
     

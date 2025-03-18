@@ -1,27 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AddRevenue = () => {
+
+    let link= useNavigate()
   const [formData, setFormData] = useState({
     month: "",
     income: "",
     expense: "",
   });
 
-  // List of Months for Dropdown
+ 
   const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
 
-  // Handle Input Change
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     
-    // Prevent negative numbers
+   
     if ((name === "income" || name === "expense") && value <=0) {
-      toast.error(`${name.charAt(0).toUpperCase() + name.slice(1)} cannot be negative!`);
+      toast.error(`${name.charAt(0).toUpperCase() + name.slice(1)} cannot be negative or 0!`);
       return;
     }
 
@@ -31,13 +34,15 @@ const AddRevenue = () => {
   // Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
+    // console.log(formData)
 
   
 
     try {
       await axios.post("http://localhost:3000/revenue", formData);
       toast.success("Revenue data added successfully!");
+      link("/dashboard/managerevenue")
+      
       setFormData({ month: "", income: "", expense: "" }); // Clear form
     } catch (error) {
       toast.error("Failed to add revenue.");
@@ -52,13 +57,13 @@ const AddRevenue = () => {
         
         {/* Month Select */}
         <div>
-          <label className="block text-gray-700 font-medium">Month</label>
+          <label className="block text-black font-medium">Month</label>
           <select
             name="month"
             value={formData.month}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 text-black border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">Select Month</option>
             {months.map((m, index) => (
@@ -69,28 +74,28 @@ const AddRevenue = () => {
 
         {/* Income Input */}
         <div>
-          <label className="block text-gray-700 font-medium">Income</label>
+          <label className="block text-black font-medium">Income</label>
           <input
             type="number"
             name="income"
             value={formData.income}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter income amount"
           />
         </div>
 
         {/* Expense Input */}
         <div>
-          <label className="block text-gray-700 font-medium">Expense</label>
+          <label className="block text-black font-medium">Expense</label>
           <input
             type="number"
             name="expense"
             value={formData.expense}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border text-black rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter expense amount"
           />
         </div>
@@ -98,7 +103,7 @@ const AddRevenue = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+          className="w-full bg-blue-600 text-black py-2 rounded-md hover:bg-blue-700 transition"
         >
           Add Revenue
         </button>

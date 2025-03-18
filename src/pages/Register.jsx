@@ -39,43 +39,39 @@ const Register = () => {
         // Password validation regex
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
       
-        // Check password conditions individually
+        
         if (password.length < 8) {
           toast.error('Password must be at least 8 characters long.');
-          return; // Prevent form submission if validation fails
+          return; 
         }
       
         if (!/[a-z]/.test(password)) {
           toast.error('Password must contain at least one lowercase letter.');
-          return; // Prevent form submission if validation fails
+          return; 
         }
       
         if (!/[A-Z]/.test(password)) {
           toast.error('Password must contain at least one uppercase letter.');
-          return; // Prevent form submission if validation fails
+          return; 
         }
       
         if (!/\d/.test(password)) {
           toast.error('Password must contain at least one number.');
-          return; // Prevent form submission if validation fails
+          return; 
         }
       
         if (!/[!@#$%^&*]/.test(password)) {
           toast.error('Password must contain at least one special character (!, @, #, $, %, ^, &, *).');
-          return; // Prevent form submission if validation fails
+          return; 
         }
       
-        // Log form data for debugging
-        // console.log(name, email, img, password);
-        
-      
-        // Prepare image files for upload
+       
         let imageFiles = { image: formData.file };
       
         // Image upload request
         axios.post(image_hosting_API, imageFiles, {
           headers: {
-            "Content-Type": "multipart/form-data", // Explicitly set content type
+            "Content-Type": "multipart/form-data", 
           },
         })
         .then(res => {

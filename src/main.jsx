@@ -23,6 +23,10 @@ import ManageUser from './routes/ManageUser.jsx';
 import UpdateRevenue from './routes/UpdateRevenue.jsx';
 import MyProfile from './routes/MyProfile.jsx';
 import Addtransection from './routes/addtransection.jsx';
+import Mytransection from './routes/Mytransection.jsx';
+import Alltransection from './routes/Alltransection.jsx';
+import Adminroute from './routes/Adminroute.jsx';
+import UserRoute from './routes/UserRoute.jsx';
 
 
 
@@ -53,7 +57,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
         path:"/dashboard",
@@ -61,19 +65,23 @@ const router = createBrowserRouter([
       },
       {
         path:"/dashboard/addrevenue",
-        element:<AddRevenue></AddRevenue>
+        element:<Adminroute><AddRevenue></AddRevenue></Adminroute>
       },
       {
         path:"/dashboard/managerevenue",
-        element:<ManageRevenue></ManageRevenue>
+        element:<Adminroute><ManageRevenue></ManageRevenue></Adminroute>
       },
       {
         path:"/dashboard/manageuser",
-        element:<ManageUser></ManageUser>
+        element:<Adminroute><ManageUser></ManageUser></Adminroute>
       },
       {
         path:"/dashboard/updaterevenue/:id",
-        element:<UpdateRevenue></UpdateRevenue>
+        element:<Adminroute><UpdateRevenue></UpdateRevenue></Adminroute>
+      },
+      {
+        path:"/dashboard/alltransection",
+        element:<Adminroute><Alltransection></Alltransection></Adminroute>
       },
       {
         path:"/dashboard/myprofile",
@@ -82,6 +90,10 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/adtransection",
         element:<Addtransection></Addtransection>
+      },
+      {
+        path:"/dashboard/mytransection",
+        element:<Mytransection></Mytransection>
       }
     ]
     

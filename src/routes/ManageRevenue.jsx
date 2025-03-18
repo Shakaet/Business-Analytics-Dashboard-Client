@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
+import { FaExclamationTriangle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import Swal from 'sweetalert2';
@@ -58,6 +59,17 @@ const handleDelete = (id) => {
   });
 };
 
+if(revenue.length==0){
+  
+      return <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+        <FaExclamationTriangle className="text-yellow-500 text-5xl mb-4" />
+        <h2 className="text-xl font-semibold text-gray-700">Oops! No revenue found here.</h2>
+        <p className="text-gray-500 mt-2">It seems there are no revenue available at the moment.</p>
+      </div>
+    </div>
+    }
+
     
   
 
@@ -69,7 +81,7 @@ const handleDelete = (id) => {
       <div className="overflow-x-auto">
         <table className="table-auto w-full border border-gray-300 text-sm md:text-base">
           <thead>
-            <tr className="bg-gray-200 text-base md:text-lg">
+            <tr className="bg-gray-200 text-black text-base md:text-lg">
               <th className="px-3 py-2">#</th>
               <th className="px-3 py-2">Month</th>
               <th className="px-3 py-2">Income ($)</th>
@@ -79,14 +91,14 @@ const handleDelete = (id) => {
           </thead>
           <tbody>
             {revenue.map((entry, index) => (
-              <tr key={entry.id} className="border-b text-center">
+              <tr key={entry.id} className="border-b text-center text-black">
                 <th className="px-3 py-2">{index + 1}</th>
                 <td className="px-3 py-2">{entry.month}</td>
                 <td className="px-3 py-2">{entry.income}</td>
                 <td className="px-3 py-2">{entry.expense}</td>
                 <td className="px-3 py-2 flex flex-wrap justify-center gap-2">
                   <Link to={`/dashboard/updaterevenue/${entry._id}`}
-                    className="bg-blue-500 text-white px-3 py-1 rounded w-full md:w-auto"
+                    className="bg-blue-500 text-black px-3 py-1 rounded w-full md:w-auto"
                     
                   >
                     Update

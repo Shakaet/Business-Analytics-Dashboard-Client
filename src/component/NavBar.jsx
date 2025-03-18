@@ -2,9 +2,10 @@ import React, { useContext } from "react";
  
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../provider/AuthProvider";
+import ThemeToggle from "../shared/ThemeToggle";
 
 export const NavBar = () => {
-  const { user, signOuts } = useContext(Context); // Get user data and logout function
+  const { user, signOuts } = useContext(Context); 
   let nav=useNavigate()
   const handleLogout = () => {
     signOuts();
@@ -12,13 +13,13 @@ export const NavBar = () => {
     nav("/login")
     
   };
-
+  
   return (
-    <div className="navbar bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg fixed top-0 z-50">
+    <div className="navbar bg-gray-700 text-black shadow-lg fixed top-0 z-50">
     {/* Navbar Start */}
     <div className="navbar-start">
       <div className="dropdown">
-        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">
+        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-black font-extrabold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -41,6 +42,7 @@ export const NavBar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
+         
           
             <>
               <li>
@@ -54,7 +56,7 @@ export const NavBar = () => {
         </ul>
       </div>
       <Link to="/" className="btn btn-ghost text-2xl text-white font-bold">
-        BD
+      DataPulse
       </Link>
     </div>
   
@@ -76,9 +78,14 @@ export const NavBar = () => {
       
       </ul>
     </div>
+
+     
   
     {/* Navbar End */}
     <div className="navbar-end">
+    <div className="mr-5"> 
+    <ThemeToggle />
+    </div>
       {user ? (
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className=" flex items-center gap-2 text-white">

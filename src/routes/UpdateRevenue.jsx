@@ -50,7 +50,7 @@ const UpdateRevenue = () => {
   // Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     try {
       await axios.patch(`http://localhost:3000/revenue/${id}`, formData);
