@@ -6,12 +6,19 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC0JFaHfvJFAE1yL5MfiuvwcqFHtlIUlsg",
-  authDomain: "businessdashboard-4942c.firebaseapp.com",
-  projectId: "businessdashboard-4942c",
-  storageBucket: "businessdashboard-4942c.firebasestorage.app",
-  messagingSenderId: "210644462795",
-  appId: "1:210644462795:web:0ade5f8efb08a2670c3f4e"
+//   apiKey: "AIzaSyC0JFaHfvJFAE1yL5MfiuvwcqFHtlIUlsg",
+//   authDomain: "businessdashboard-4942c.firebaseapp.com",
+//   projectId: "businessdashboard-4942c",
+//   storageBucket: "businessdashboard-4942c.firebasestorage.app",
+//   messagingSenderId: "210644462795",
+//   appId: "1:210644462795:web:0ade5f8efb08a2670c3f4e"
+
+            apiKey: import.meta.env.VITE_apiKey,
+            authDomain: import.meta.env.VITE_authDomain,
+            projectId: import.meta.env.VITE_projectId,
+            storageBucket: import.meta.env.VITE_storageBucket,
+            messagingSenderId: import.meta.env.VITE_messagingSenderId,
+            appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

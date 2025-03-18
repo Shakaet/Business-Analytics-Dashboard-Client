@@ -98,7 +98,7 @@ const Register = () => {
               .then((result)=>{
                toast.success("Profile Updated")
               
-            axios.post("https://product-project-server.vercel.app/users",usersData)
+            axios.post("http://localhost:3000/users",usersData)
             .then((res)=>{
                 if(res.data.insertedId){
                     // alert("user added")
