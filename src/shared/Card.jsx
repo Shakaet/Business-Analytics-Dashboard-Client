@@ -8,7 +8,7 @@ const Card = ({ title, count, icon }) => {
         {icon}
       </div>
       <div>
-        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+        <h3 className="text-lg font-semibold text-gray-800 w-full">{title}</h3>
         <p className="text-xl font-bold text-gray-900">{count}</p>
       </div>
     </div>

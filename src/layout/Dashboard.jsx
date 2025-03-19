@@ -119,7 +119,7 @@ const Dashboard = () => {
            Dashboard
           </h1>
 
-        <div className="mt-4 bg-white p-5 rounded-lg shadow-md">
+        <div className="mt-4 bg-white p-5 rounded-lg">
           <Outlet />
         </div>
       </div>
