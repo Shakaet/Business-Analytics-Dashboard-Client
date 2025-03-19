@@ -1,6 +1,6 @@
 # DataPulse - Business Analytics Dashboard
 
-![DataPulse Logo]
+
 
 ## :rocket: Project Overview
 

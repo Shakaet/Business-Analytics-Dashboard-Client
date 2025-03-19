@@ -130,16 +130,16 @@ const Register = () => {
 
   
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 mt-14">
   <div className="max-w-md w-full p-6 bg-white shadow-md rounded-lg">
-    <h2 className="text-3xl font-semibold text-center mb-6">Register</h2>
+    <h2 className="text-3xl font-semibold text-center mb-6 text-black">Register</h2>
     <form onSubmit={handleSubmit} className="space-y-4">
       <input
         type="text"
         name="name"
         placeholder="Name"
         required
-        className="w-full px-4 py-2 border border-gray-300 rounded-md"
+        className="w-full px-4 py-2 border text-black border-gray-300 rounded-md"
       />
       <input
         type="email"
@@ -180,7 +180,7 @@ const Register = () => {
         Register
       </button>
     </form>
-    <div className="text-center mt-4">
+    <div className="text-center mt-4 text-black">
       <span>Already have an account? </span>
       <Link to={"/login"} className="text-blue-500">Login</Link>
       <SocialLogin></SocialLogin>
