@@ -24,13 +24,21 @@ Follow these instructions to set up and run **DataPulse** locally.
   ### POST   http://localhost:3000/revenue
   ### POST   http://localhost:3000/transactions
   ### GET    http://localhost:3000/alltransection
-  ### DELETE http://localhost:3000/tansection/id
   ### DELETE http://localhost:3000/revenue/id
   ### GET    http://localhost:3000/revenue
   ### PATCH  http://localhost:3000/revenue/id
   ### GET    http://localhost:3000/revenue/id
   ### DELETE http://localhost:3000/tansection/id
   ### PATCH  http://localhost:3000/transactions/id
+  ### GET    http://localhost:3000/users/admin/email
+  ### GET    http://localhost:3000/transection/email
+  ### GET    http://localhost:3000/users/user/email
+  ### DELETE http://localhost:3000/users/id
+  ### PATCH  http://localhost:3000/users/id
+  ### GET    http://localhost:3000/users
+  ### POST   http://localhost:3000/users
+ 
+
 
   
 

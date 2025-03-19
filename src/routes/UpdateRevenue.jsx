@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateRevenue = () => {
+
+  let link=useNavigate()
 
     let {id}=useParams()
   const [formData, setFormData] = useState({
@@ -54,7 +56,10 @@ const UpdateRevenue = () => {
 
     try {
       await axios.patch(`http://localhost:3000/revenue/${id}`, formData);
+      
       toast.success("Revenue data updated successfully!");
+
+      link("/dashboard/managerevenue")
     } catch (error) {
       toast.error("Failed to update revenue.");
       console.error(error);
