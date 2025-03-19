@@ -3,6 +3,8 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Lottie from "lottie-react";
+import animationData from "../assets/register.json";
 
 
 import SocialLogin from '../shared/SocialLogin';
@@ -130,63 +132,85 @@ const Register = () => {
 
   
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 mt-14">
-  <div className="max-w-md w-full p-6 bg-white shadow-md rounded-lg">
-    <h2 className="text-3xl font-semibold text-center mb-6 text-black">Register</h2>
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        required
-        className="w-full px-4 py-2 border text-black border-gray-300 rounded-md"
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        required
-        className="w-full px-4 py-2 border border-gray-300 rounded-md"
-      />
+      <div className="min-h-screen flex items-center justify-center  px-4 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 max-w-4xl w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-24">
+        {/* Lottie Animation */}
+        <div className="flex justify-center items-center">
+          <div className="w-60 h-60 md:w-72 md:h-72">
+            <Lottie animationData={animationData} loop={true} />
+          </div>
+        </div>
 
-      {/* Profile photo upload */}
-      <label className="block">
-        <span className="sr-only">Choose profile photo</span>
-        <input
-          type="file"
-          name='img'
-          required
-          onChange={handleFileChange}
-          className="block w-full text-sm text-slate-500
-            file:mr-4 file:py-2 file:px-4
-            file:rounded-full file:border-0
-            file:text-sm file:font-semibold
-            file:bg-violet-50 file:text-violet-700
-            hover:file:bg-violet-100"
-        />
-      </label>
+        {/* Registration Form */}
+        <div className="w-full border-2 border-amber-500 p-7 rounded-xl">
+          <h2 className="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">
+            Register
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              className="w-full px-4 py-2 border text-gray-900 dark:text-gray-300 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              className="w-full px-4 py-2 border text-gray-900 dark:text-gray-300 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
 
-      <input
-        type="password"
-        name="password"
-        required
-        placeholder="Password"
-        className="w-full px-4 py-2 border border-gray-300 rounded-md"
-      />
-      <button
-        type="submit"
-        className="w-full py-2 bg-blue-500 text-white rounded-md"
-      >
-        Register
-      </button>
-    </form>
-    <div className="text-center mt-4 text-black">
-      <span>Already have an account? </span>
-      <Link to={"/login"} className="text-blue-500">Login</Link>
-      <SocialLogin></SocialLogin>
+            {/* Profile photo upload */}
+            <label className="block">
+              <span className="text-gray-700 dark:text-gray-300">Profile Photo</span>
+              <input
+                type="file"
+                name="img"
+                required
+                onChange={handleFileChange}
+                className="block w-full mt-1 text-sm text-gray-900 dark:text-gray-300
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-lg file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-blue-100 dark:file:bg-blue-700
+                  file:text-blue-600 dark:file:text-white
+                  hover:file:bg-blue-200 dark:hover:file:bg-blue-600"
+              />
+            </label>
+
+            <input
+              type="password"
+              name="password"
+              required
+              placeholder="Password"
+              className="w-full px-4 py-2 border text-gray-900 dark:text-gray-300 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <button
+              type="submit"
+              className="w-full py-2 bg-blue-600 dark:bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-700 dark:hover:bg-blue-400 transition-all"
+            >
+              Register
+            </button>
+          </form>
+
+          {/* Already have an account */}
+          <div className="text-center mt-4 text-gray-700 dark:text-gray-300">
+            <span>Already have an account? </span>
+            <Link to="/login" className="text-blue-500 dark:text-blue-400 hover:underline">
+              Login
+            </Link>
+          </div>
+
+          {/* Social Login */}
+          <div className="mt-4">
+            <SocialLogin />
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     );
 };

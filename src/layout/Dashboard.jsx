@@ -109,17 +109,17 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-5">
+      <div className="flex-1 p-5 bg-amber-200">
         {/* Mobile Menu Button */}
         <button onClick={toggleSidebar} className="md:hidden mb-4 p-2 bg-gray-900 text-white rounded-md">
           {isSidebarOpen ? "Close Menu" : "Open Menu"}
         </button>
 
         <h1 className="text-4xl font-bold text-center text-gray-800 md:text-5xl lg:text-6xl bg-gradient-to-r from-blue-500 to-purple-600  bg-clip-text drop-shadow-lg">
-           Dashboard
+           DASHBOARD
           </h1>
 
-        <div className="mt-4 bg-white p-5 rounded-lg">
+        <div className="mt-4 bg-amber-400 w-full p-5 rounded-lg">
           <Outlet />
         </div>
       </div>

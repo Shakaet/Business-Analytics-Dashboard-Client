@@ -54,7 +54,7 @@ const ManageUser = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4  rounded-lg">
       {/* Table for larger screens */}
       <div className="overflow-x-auto hidden lg:flex">
         <table className="table w-full">
@@ -113,7 +113,7 @@ const ManageUser = () => {
       {/* Responsive Card format for mobile devices */}
       <div className="lg:hidden grid grid-cols-1 gap-4">
         {users.map((user) => (
-          <div key={user._id} className="bg-white shadow-md p-4 rounded-lg">
+          <div key={user._id} className="bg-gray-500 shadow-md p-4 rounded-lg">
             <div className="flex items-center gap-3">
               <div className="avatar">
                 <div className="mask mask-squircle h-12 w-12">
@@ -121,17 +121,17 @@ const ManageUser = () => {
                 </div>
               </div>
               <div>
-                <h3 className="font-bold text-lg">{user.name}</h3>
-                <p className="text-sm opacity-50">{user.email}</p>
+                <h3 className="font-bold text-lg  text-black">{user.name}</h3>
+                <p className="text-sm opacity-50 font-bold  text-black">{user.email}</p>
               </div>
             </div>
 
             <div className="mt-3">
-              <label className="block text-sm font-medium">Role</label>
+              <label className="block text-sm font-bold  text-black">Role</label>
               <select
                 value={user.role}
                 onChange={(e) => handleRoleChange(user._id, e.target.value)}
-                className="select select-bordered w-full mt-1"
+                className=" text-black font-bold  select select-bordered w-full mt-1"
               >
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
@@ -141,7 +141,7 @@ const ManageUser = () => {
             <div className="mt-4">
               <button
                 onClick={() => handleDelete(user._id)}
-                className="btn btn-ghost bg-red-500 border-2 text-white w-full"
+                className="btn btn-ghost bg-red-500 border-2 font-bold  text-black w-full"
               >
                 Delete
               </button>

@@ -57,22 +57,22 @@ const ManageRevenue = () => {
       <h2 className="text-2xl font-semibold mb-4">Manage Revenue</h2>
       <div className="hidden md:block overflow-x-auto">
         <table className="table-auto w-full border border-gray-300 text-sm md:text-base">
-          <thead>
+          <thead className="border-2 border-black">
             <tr className="bg-gray-200 text-black text-base md:text-lg">
-              <th className="px-3 py-2">#</th>
-              <th className="px-3 py-2">Month</th>
-              <th className="px-3 py-2">Income ($)</th>
-              <th className="px-3 py-2">Expenses ($)</th>
-              <th className="px-3 py-2">Actions</th>
+              <th className="px-3 py-2 border-2 border-r-2">#</th>
+              <th className="px-3 py-2 border-2 border-r-2">Month</th>
+              <th className="px-3 py-2 border-2 border-r-2">Income ($)</th>
+              <th className="px-3 py-2 border-2 border-r-2">Expenses ($)</th>
+              <th className="px-3 py-2 border-2 border-r-2">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className=" border-b-2 border-l-2 border-r-2 border-black">
             {revenue.map((entry, index) => (
               <tr key={entry._id} className="border-b text-center text-black">
-                <th className="px-3 py-2">{index + 1}</th>
-                <td className="px-3 py-2">{entry.month}</td>
-                <td className="px-3 py-2">{entry.income}</td>
-                <td className="px-3 py-2">{entry.expense}</td>
+                <th className="px-3 py-2 border-2 border-r-2">{index + 1}</th>
+                <td className="px-3 py-2 border-2 border-r-2">{entry.month}</td>
+                <td className="px-3 py-2 border-2 border-r-2">{entry.income}</td>
+                <td className="px-3 py-2 border-2 border-r-2">{entry.expense}</td>
                 <td className="px-3 py-2 flex flex-wrap justify-center gap-2">
                   <Link
                     to={`/dashboard/updaterevenue/${entry._id}`}
@@ -94,7 +94,7 @@ const ManageRevenue = () => {
       </div>
       <div className="md:hidden flex flex-col gap-4">
         {revenue.map((entry, index) => (
-          <div key={entry._id} className="p-4 bg-white shadow rounded-md border">
+          <div key={entry._id} className="p-4 bg-white shadow rounded-md">
             <h3 className="text-lg font-semibold">{entry.month}</h3>
             <p className="text-gray-600">Income: ${entry.income}</p>
             <p className="text-gray-600">Expenses: ${entry.expense}</p>

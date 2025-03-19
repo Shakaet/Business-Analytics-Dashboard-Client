@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
+
 import { useNavigate } from "react-router-dom";
+import banner from "../assets/banner.jpg"
+import img1 from "../assets/ceo.jpg"
+import img2 from "../assets/cto.jpg"
+import img3 from "../assets/coo.jpg"
 
 const Home = () => {
 
@@ -13,33 +18,44 @@ const Home = () => {
   let handleC=()=>{
     nav("/dashboard")
   }
+
+
+ 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+    <div>
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 text-white">
       {/* Hero Section */}
-      <section className="h-screen flex flex-col justify-center items-center text-center p-8">
-        <motion.h1
-          className="text-5xl font-extrabold mb-4"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Welcome to Business Analytics Dashboard
-        </motion.h1>
-        <motion.p
-          className="text-lg max-w-2xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          Get real-time insights into your business performance with our powerful analytics tools.
-        </motion.p>
-        <motion.button onClick={handleC}
-          className="mt-6 px-6 py-3 bg-white text-blue-600 font-bold rounded-lg shadow-md hover:bg-blue-200"
-          whileHover={{ scale: 1.1 }}
-        >
-          Get Started
-        </motion.button>
-      </section>
+     
+      <section
+  className="h-screen flex flex-col justify-center items-center text-center p-8 bg-cover bg-center"
+  style={{ backgroundImage: `url(${banner})` }}
+>
+  <motion.h1
+    className="text-5xl font-extrabold mb-4 text-[#1E90FF]"
+    initial={{ opacity: 0, y: -50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+  >
+    Welcome to Business Analytics Dashboard
+  </motion.h1>
+  <motion.p
+    className="text-xl font-extrabold max-w-2xl text-white"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.5, duration: 1 }}
+  >
+    Get real-time insights into your business performance with our powerful analytics tools.
+  </motion.p>
+  <motion.button onClick={handleC}
+    className="mt-6 px-6 py-3 bg-white text-blue-600 font-bold rounded-lg shadow-md hover:bg-blue-200"
+    whileHover={{ scale: 1.1 }}
+  >
+    Get Started
+  </motion.button>
+</section>
+
+     
+     
 
       {/* Features Section */}
       <section className="p-10 bg-white text-black">
@@ -213,6 +229,98 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Team Section */}
+<section className="p-10 bg-gray-800 text-white">
+  <motion.h2
+    className="text-3xl font-bold text-center mb-8"
+    initial={{ opacity: 0, y: -20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+  >
+    Meet Our Team
+  </motion.h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {[
+      { name: "Alice Johnson", position: "CEO", img: img1 },
+      { name: "Bob Smith", position: "CTO", img: img2 },
+      { name: "Charlie Davis", position: "CMO", img: img3 },
+    ].map((member, index) => (
+      <motion.div
+        key={index}
+        className="bg-gray-700 p-6 rounded-lg shadow-lg text-center"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ delay: index * 0.2, duration: 0.5 }}
+      >
+        <img
+          src={member?.img}
+          alt={member.name}
+          className="w-32 h-32 rounded-full mx-auto mb-4"
+        />
+        <h3 className="text-xl font-bold">{member.name}</h3>
+        <p className="text-sm">{member.position}</p>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
+{/* Upcoming Events Section */}
+<section className="p-10 bg-gray-900 text-white">
+  <motion.h2
+    className="text-3xl font-bold text-center mb-8"
+    initial={{ opacity: 0, y: -20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+  >
+    Upcoming Events
+  </motion.h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {[
+      { title: "Business Analytics Conference", date: "April 15, 2025" },
+      { title: "Data Science Summit", date: "May 5, 2025" },
+      { title: "Tech Innovation Expo", date: "June 20, 2025" },
+    ].map((event, index) => (
+      <motion.div
+        key={index}
+        className="bg-blue-700 p-6 rounded-lg shadow-lg"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ delay: index * 0.2, duration: 0.5 }}
+      >
+        <h3 className="text-xl font-bold">{event.title}</h3>
+        <p className="text-lg">{event.date}</p>
+      </motion.div>
+    ))}
+  </div>
+</section>
+{/* Newsletter Subscription Section */}
+<section className="p-10 bg-gray-200 text-black text-center">
+  <motion.h2
+    className="text-3xl font-bold mb-8"
+    initial={{ opacity: 0, y: -20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+  >
+    Stay Updated with Our Newsletter
+  </motion.h2>
+  <form className="max-w-lg mx-auto">
+    <input
+      type="email"
+      placeholder="Enter your email"
+      className="p-3 mb-4 w-full rounded-lg text-gray-900"
+    />
+    <motion.button
+      type="submit"
+      className="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md"
+      whileHover={{ scale: 1.1 }}
+    >
+      Subscribe Now
+    </motion.button>
+  </form>
+</section>
+
+
+
       {/* 4️⃣ Recent Blog Posts Section */}
       <section className="p-10 bg-gray-900 text-white text-center">
         <motion.h2 className="text-3xl font-bold mb-6"
@@ -298,6 +406,7 @@ const Home = () => {
 
 
      
+    </div>
     </div>
   );
 };

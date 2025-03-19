@@ -57,26 +57,26 @@ const Alltransection = () => {
     <div className="mt-10 p-4">
       {/* Large Screens: Table View */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full border-collapse bg-white shadow-md rounded-lg">
+        <table className="w-full border-collapse  shadow-md rounded-lg">
           <thead className="bg-gray-200 text-black">
             <tr>
-              <th className="p-3 text-left">Amount</th>
-              <th className="p-3 text-left">Type</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Date</th>
-              <th className="p-3 text-left">Status</th>
-              <th className="p-3 text-left">Action</th>
+              <th className="p-3 text-left border-2 border-r-2">Amount</th>
+              <th className="p-3 text-left border-2 border-r-2">Type</th>
+              <th className="p-3 text-left border-2 border-r-2">Email</th>
+              <th className="p-3 text- border-2 border-r-2">Date</th>
+              <th className="p-3 text-left border-2 border-r-2">Status</th>
+              <th className="p-3 text-left border-2 border-r-2">Action</th>
             </tr>
           </thead>
           <tbody>
             {mytransection.map((txn) => (
-              <tr key={txn._id} className="border-b hover:bg-gray-100 text-black">
-                <td className="p-3">${txn.amount}</td>
-                <td className="p-3">{txn.type}</td>
-                <td className="p-3">{txn.email}</td>
-                <td className="p-3">{new Date(txn.date).toLocaleDateString()}</td>
-                <td className="p-3">{txn.status}</td>
-                <td className="p-3">
+              <tr key={txn._id} className="border-b  text-black">
+                <td className="p-3 border-2 border-r-2">${txn.amount}</td>
+                <td className="p-3 border-2 border-r-2">{txn.type}</td>
+                <td className="p-3 border-2 border-r-2">{txn.email}</td>
+                <td className="p-3 border-2 border-r-2">{new Date(txn.date).toLocaleDateString()}</td>
+                <td className="p-3 border-2 border-r-2">{txn.status}</td>
+                <td className="p-3 border-2 border-r-2">
                   <button
                     className="bg-red-500 text-white px-3 py-1 rounded w-full md:w-auto"
                     onClick={() => handleDelete(txn._id)}
