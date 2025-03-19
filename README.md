@@ -10,7 +10,7 @@
 
 ## :link: Live Link
 
-[DataPulse Live Demo](#) *(Replace with your actual live link)*
+[DataPulse Live Demo](https://melodious-treacle-a31ff2.netlify.app/) 
 
 ---
 
