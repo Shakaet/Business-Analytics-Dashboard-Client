@@ -68,26 +68,27 @@ const Mytransection = () => {
   return (
     <div className="mt-10 p-4">
       {/* Table for Large Screens */}
+      <h2 className="text-2xl font-bold mb-4">My Transaction</h2>
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full border-collapse bg-white shadow-md rounded-lg">
-          <thead className="bg-gray-200 text-black">
+        <table className="w-full border-collapse  shadow-md rounded-lg">
+          <thead className="bg-gray-200 text-black border-2 border-black">
             <tr>
-              <th className="p-3 text-left">Amount</th>
-              <th className="p-3 text-left">Type</th>
-              <th className="p-3 text-left">Email</th>
-              <th className="p-3 text-left">Date</th>
-              <th className="p-3 text-left">Status</th>
-              <th className="p-3 text-left">Action</th>
+              <th className="p-3 text-left border-2 border-black">Amount</th>
+              <th className="p-3 text-left border-2 border-black">Type</th>
+              <th className="p-3 text-left border-2 border-black">Email</th>
+              <th className="p-3 text-left border-2 border-black">Date</th>
+              <th className="p-3 text-left border-2 border-black">Status</th>
+              <th className="p-3 text-left border-2 border-black">Action</th>
             </tr>
           </thead>
           <tbody className='text-black'>
             {mytransection.map((txn) => (
-              <tr key={txn._id} className="border-b hover:bg-gray-100">
-                <td className="p-3">${txn.amount}</td>
-                <td className="p-3">{txn.type}</td>
-                <td className="p-3">{txn.email}</td>
-                <td className="p-3">{new Date(txn.date).toLocaleDateString()}</td>
-                <td className="p-3">
+              <tr key={txn._id} className="border-b hover:bg-gray-100 border-2 border-black">
+                <td className="p-3 border-2 border-black">${txn.amount}</td>
+                <td className="p-3 border-2 border-black">{txn.type}</td>
+                <td className="p-3 border-2 border-black">{txn.email}</td>
+                <td className="p-3 border-2 border-black">{new Date(txn.date).toLocaleDateString()}</td>
+                <td className="p-3 border-2 border-black">
                   {txn.status === "pending" ? (
                     <select
                       value={txn.status}
@@ -101,7 +102,7 @@ const Mytransection = () => {
                     <span className="text-green-600 font-semibold">Completed</span>
                   )}
                 </td>
-                <td>
+                <td className='border-2 border-black p-5'>
                   <button
                     className="bg-red-500 text-white px-3 py-1 rounded w-full md:w-auto"
                     onClick={() => handleDelete(txn._id)}

@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8 px-6 mt-10">
+    <footer className="bg-blue-900 text-white py-8 px-6">
   <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
     <div className="text-center sm:text-left mb-6 sm:mb-0">
       <h2 className="text-2xl font-semibold mb-2">DataPulse</h2>

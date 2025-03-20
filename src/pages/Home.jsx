@@ -5,6 +5,8 @@ import banner from "../assets/banner.jpg"
 import img1 from "../assets/ceo.jpg"
 import img2 from "../assets/cto.jpg"
 import img3 from "../assets/coo.jpg"
+import { useEffect, useState } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Home = () => {
 
@@ -19,24 +21,60 @@ const Home = () => {
     nav("/dashboard")
   }
 
+   // Theme State
+   const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark'
+  );
+
+  // Toggle Theme
+  const toggleTheme = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem('theme', newMode ? 'dark' : 'light');
+      return newMode;
+    });
+  };
+
+  // Apply theme class to <html> tag
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
 
  
   return (
     <div>
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-600 to-purple-600'} text-white`}>
       {/* Hero Section */}
+     
      
       <section
   className="h-screen flex flex-col justify-center items-center text-center p-8 bg-cover bg-center"
   style={{ backgroundImage: `url(${banner})` }}
+  
 >
   <motion.h1
-    className="text-5xl font-extrabold mb-4 text-[#1E90FF]"
+    className="text-5xl font-extrabold  text-[#1E90FF] mb-8"
     initial={{ opacity: 0, y: -50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1 }}
   >
+     {/* Theme Toggle Button */}
+     <div className="flex justify-end mb-6 fixed bottom-2 right-6">
+          <button
+            onClick={toggleTheme}
+            className="p-3 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 rounded-full shadow-lg transition duration-300"
+          >
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
+        </div>
     Welcome to Business Analytics Dashboard
+    
+
   </motion.h1>
   <motion.p
     className="text-xl font-extrabold max-w-2xl text-white"
@@ -54,11 +92,14 @@ const Home = () => {
   </motion.button>
 </section>
 
+    
+
+
      
      
 
       {/* Features Section */}
-      <section className="p-10 bg-white text-black">
+      <section className={`p-10 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  `}>
         <motion.h2
           className="text-3xl font-bold text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -83,7 +124,7 @@ const Home = () => {
       </section>
 
       {/* Analytics Overview Section */}
-      <section className="p-10 bg-gray-900 text-white text-center">
+      <section className={`p-10 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  text-center`}>
         <motion.h2
           className="text-3xl font-bold mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -113,7 +154,7 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="p-10 bg-white text-black">
+      <section className={`p-10 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
         <motion.h2
           className="text-3xl font-bold text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -129,7 +170,7 @@ const Home = () => {
           ].map((testimonial, index) => (
             <motion.div
               key={index}
-              className="bg-gray-200 p-6 rounded-lg shadow-lg"
+              className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black shadow-lg  border-white'} p-6 rounded-lg shadow-lg`}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
@@ -142,7 +183,7 @@ const Home = () => {
       </section>
 
       {/* 1️⃣ How It Works Section */}
-      <section className="p-10 bg-white text-black text-center">
+      <section className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  p-10  text-black text-center`}>
         <motion.h2 className="text-3xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -170,7 +211,7 @@ const Home = () => {
       </section>
 
       {/* 2️⃣ Pricing Plans Section */}
-      <section className="p-10 bg-gray-900 text-white text-center">
+      <section className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  p-10  text-center`}>
         <motion.h2 className="text-3xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -202,7 +243,7 @@ const Home = () => {
       </section>
 
       {/* 3️⃣ Why Choose Us Section */}
-      <section className="p-10 bg-white text-black text-center">
+      <section className={` ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} p-10  text-center`}>
         <motion.h2 className="text-3xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -218,7 +259,7 @@ const Home = () => {
             "Seamless Integrations"
           ].map((reason, index) => (
             <motion.div key={index} 
-              className="bg-gray-200 p-6 rounded-lg shadow-lg"
+              className=" p-6 rounded-lg shadow-lg"
               initial={{ opacity: 0, x: -30 }} 
               whileInView={{ opacity: 1, x: 0 }} 
               transition={{ delay: index * 0.2, duration: 0.5 }}
@@ -230,7 +271,7 @@ const Home = () => {
       </section>
 
       {/* Team Section */}
-<section className="p-10 bg-gray-800 text-white">
+<section className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  p-10 `}>
   <motion.h2
     className="text-3xl font-bold text-center mb-8"
     initial={{ opacity: 0, y: -20 }}
@@ -265,7 +306,7 @@ const Home = () => {
 </section>
 
 {/* Upcoming Events Section */}
-<section className="p-10 bg-gray-900 text-white">
+<section className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} p-10 `}>
   <motion.h2
     className="text-3xl font-bold text-center mb-8"
     initial={{ opacity: 0, y: -20 }}
@@ -294,7 +335,7 @@ const Home = () => {
   </div>
 </section>
 {/* Newsletter Subscription Section */}
-<section className="p-10 bg-gray-200 text-black text-center">
+<section className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  p-10  text-center`}>
   <motion.h2
     className="text-3xl font-bold mb-8"
     initial={{ opacity: 0, y: -20 }}
@@ -307,7 +348,7 @@ const Home = () => {
     <input
       type="email"
       placeholder="Enter your email"
-      className="p-3 mb-4 w-full rounded-lg text-gray-900"
+      className="p-3 mb-4 w-full rounded-lg border-2"
     />
     <motion.button
       type="submit"
@@ -322,7 +363,7 @@ const Home = () => {
 
 
       {/* 4️⃣ Recent Blog Posts Section */}
-      <section className="p-10 bg-gray-900 text-white text-center">
+      <section className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  p-10  text-center`}>
         <motion.h2 className="text-3xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -349,7 +390,7 @@ const Home = () => {
       </section>
 
       {/* 5️⃣ Frequently Asked Questions (FAQs) */}
-      <section className="p-10 bg-white text-black text-center">
+      <section className={`p-10 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} text-center`}>
         <motion.h2 className="text-3xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -377,7 +418,7 @@ const Home = () => {
       </section>
 
                  {/* Call to Action */}
-      <section className="p-10 bg-gradient-to-r from-purple-600 to-blue-600 text-center">
+      <section className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-r from-purple-600 to-blue-600 text-black'}  p-10  text-center`}>
         <motion.h2
           className="text-3xl font-bold text-white mb-6"
           initial={{ opacity: 0, y: -20 }}

@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
+import useAdmin from "../assets/hook/useAdmin";
 
 const UpdateRevenue = () => {
+
+
+
+  let [isAdmin]=useAdmin()
 
   let link=useNavigate()
 
@@ -59,7 +64,15 @@ const UpdateRevenue = () => {
       
       toast.success("Revenue data updated successfully!");
 
-      link("/dashboard/managerevenue")
+      if(isAdmin){
+        link("/dashboard/managerevenue")
+
+      }
+      else{
+        link("/dashboard/myrevenue")
+      }
+
+      
     } catch (error) {
       toast.error("Failed to update revenue.");
       console.error(error);

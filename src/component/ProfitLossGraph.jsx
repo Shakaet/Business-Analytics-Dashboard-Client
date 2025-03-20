@@ -62,9 +62,13 @@ const ProfitLossGraph = ({ data }) => {
 
   return (
     <div className="w-full p-4 bg-white rounded-lg shadow-lg">
-      <h3 className="text-xl font-semibold text-center mb-4">Profit & Loss Over Time</h3>
-      <Bar data={chartData} options={options} />
-    </div>
+    <h3 className="text-xl font-semibold text-center mb-4">
+      Profit & Loss Over Time
+    </h3>
+  
+    <Bar data={chartData} options={options} height={300} />
+  </div>
+  
   );
 };
 

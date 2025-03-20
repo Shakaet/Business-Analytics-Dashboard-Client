@@ -62,9 +62,12 @@ const RevenueGraph = ({ data }) => {
 
   return (
     <div className="w-full p-4 bg-white rounded-lg shadow-md">
-      <h3 className="text-xl font-semibold mb-4 text-center">Revenue vs Expense Over Time</h3>
-      <Bar data={chartData} options={options} />
-    </div>
+  <h3 className="text-xl font-semibold mb-4 text-center">Revenue vs Expense Over Time</h3>
+  <div className="h-[400px]"> {/* Adjust height here */}
+    <Bar data={chartData} options={{ ...options, maintainAspectRatio: false }} />
+  </div>
+</div>
+
   );
 };
 

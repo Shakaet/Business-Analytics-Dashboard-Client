@@ -93,12 +93,12 @@ const Alltransection = () => {
       {/* Small Screens: Card View */}
       <div className="md:hidden space-y-4">
         {mytransection.map((txn) => (
-          <div key={txn._id} className="bg-white shadow-md rounded-lg p-4 border">
-            <p className="text-lg font-semibold">Amount: <span className="text-blue-600">${txn.amount}</span></p>
-            <p>Type: <span className="font-medium">{txn.type}</span></p>
-            <p>Email: <span className="text-gray-700">{txn.email}</span></p>
-            <p>Date: <span className="text-gray-600">{new Date(txn.date).toLocaleDateString()}</span></p>
-            <p>Status: <span className="font-semibold">{txn.status}</span></p>
+          <div key={txn._id} className="bg-amber-400  shadow-md rounded-lg p-4 border">
+            <p className="text-lg font-semibold mb-2">Amount: <span className="text-blue-600">${txn.amount}</span></p>
+            <p className='text-black'>Type: <span className="font-medium">{txn.type}</span></p>
+            <p className='text-black'>Email: <span className="text-gray-700">{txn.email}</span></p>
+            <p className='text-black'>Date: <span className="text-gray-600">{new Date(txn.date).toLocaleDateString()}</span></p>
+            <p className='text-black'>Status: <span className="font-semibold">{txn.status}</span></p>
             <button
               className="mt-3 bg-red-500 text-white px-3 py-1 rounded w-full"
               onClick={() => handleDelete(txn._id)}

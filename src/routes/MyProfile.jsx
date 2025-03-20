@@ -11,11 +11,11 @@ const MyProfile = () => {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-lg">
+     <div className="flex items-center justify-center min-h-screen bg-[#111827] rounded p-6">
+      <div className="w-full max-w-2xl mx-auto p-8 rounded-2xl bg-yellow/20 backdrop-blur-lg shadow-[0px_10px_30px_rgba(255,255,255,0.2),0px_-10px_30px_rgba(255,255,255,0.2)]">
         <div className="flex flex-col items-center text-center">
           {/* User Image */}
-          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-indigo-500 shadow-lg">
+          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-[0_0_20px_rgba(255,255,255,0.5)]">
             <img
               src={user?.photoURL || "https://via.placeholder.com/150"}
               alt="User"
@@ -25,15 +25,15 @@ const MyProfile = () => {
 
           {/* User Info */}
           <div className="mt-4">
-            <h2 className="text-3xl font-bold text-gray-900">{user?.displayName}</h2>
-            <p className="text-lg text-gray-500 mt-1">{user?.email}</p>
+            <h2 className="text-3xl  text-white font-bold">{user?.displayName || "Guest User"}</h2>
+            <p className="text-lg text-gray-200 font-bold mt-1">{user?.email || "guest@example.com"}</p>
           </div>
 
           {/* Update Profile Button */}
           <div className="mt-6">
             <Link
               to={"/profile"}
-              className="bg-indigo-600 text-white text-lg px-6 py-3 rounded-full shadow-md hover:bg-indigo-700 transition duration-300"
+              className="bg-[#06B6D4] text-white font-bold text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-[0px_0px_20px_rgba(255,255,255,0.6)] transition duration-300 transform hover:scale-105"
             >
               Update Profile
             </Link>

@@ -1,7 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../provider/AuthProvider";
 import axios from "axios";
+import img from "../assets/update.jpg";
+import { FaMoon, FaSun } from "react-icons/fa";
+
 
 
 const image_hosting_key = import.meta.env.VITE_image_Hosting_key;
@@ -56,55 +59,93 @@ const UpdateProfile = () => {
     }
   };
 
+   // Theme State
+   const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark'
+  );
+
+  // Toggle Theme
+  const toggleTheme = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem('theme', newMode ? 'dark' : 'light');
+      return newMode;
+    });
+  };
+
+  // Apply theme class to <html> tag
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-r from-blue-100 to-indigo-200 dark:from-gray-800 dark:to-black">
-
-
-  <div className="max-w-lg w-full bg-white dark:bg-gray-800 shadow-xl rounded-3xl p-8 space-y-6 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-    <h1 className="text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-6">
-      Update Your Profile
-    </h1>
-    <form onSubmit={handleUpdateProfile} className="space-y-6">
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-      {success && <p className="text-green-500 text-sm text-center">{success}</p>}
-
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Name</span>
-        </label>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          className="input input-bordered w-full p-4 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none text-gray-800 dark:text-gray-200 dark:bg-gray-700 dark:border-gray-600 shadow-md"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-      </div>
-
+    <div className="min-h-screen gap-24 flex flex-col md:flex-row items-center justify-center p-6 bg-gradient-to-r from-blue-100 to-indigo-200 dark:from-gray-800 dark:to-black">
+      
       <div>
-        <label className="label">
-          <span className="label-text text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Photo</span>
-        </label>
-        <span className="sr-only">Choose profile photo</span>
-        <input
-          type="file"
-          name="img"
-          required
-          onChange={handleFileChange}
-          className="block w-full text-sm text-gray-600 dark:text-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-purple-100 hover:file:bg-purple-200 dark:file:bg-purple-600 dark:hover:file:bg-purple-500 focus:outline-none"
-        />
-      </div>
 
-      <button
-        type="submit"
-        className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white w-full py-3 rounded-xl hover:from-purple-600 hover:to-pink-600 focus:ring-2 focus:ring-purple-600 transition-all duration-300 dark:from-purple-700 dark:to-pink-600"
-      >
-        Update Information
-      </button>
-    </form>
-  </div>
-</div>
+        <img className="w-100 h-100 rounded-2xl mt-20" src={img}></img>
+      </div>
+         {/* Theme Toggle Button */}
+           <div className="flex justify-end mb-6 fixed bottom-2 right-6">
+                <button
+                  onClick={toggleTheme}
+                  className="p-3 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 rounded-full shadow-lg transition duration-300"
+                >
+                  {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+                </button>
+              </div>
+
+      {/* Update Profile Form */}
+      <div className={` ${darkMode ? 'bg-gray-900 text-white' : 'bg-white dark:bg-gray-800'} max-w-lg w-full  mt-20 shadow-xl rounded-3xl p-8 space-y-6 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl md:w-1/2`}>
+        <h1 className="text-4xl font-extrabold text-center  mb-6">
+          Update Your Profile
+        </h1>
+        <form onSubmit={handleUpdateProfile} className="space-y-6">
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          {success && <p className="text-green-500 text-sm text-center">{success}</p>}
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-xl font-semibold  dark:text-gray-300 mb-2">Name</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              className="input input-bordered w-full p-4 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none text-gray-800 dark:text-gray-200 dark:bg-gray-700 dark:border-gray-600 shadow-md"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label className="label">
+              <span className="label-text text-xl font-semibold  dark:text-gray-300 mb-2">Photo</span>
+            </label>
+            <span className="sr-only">Choose profile photo</span>
+            <input
+              type="file"
+              name="img"
+              required
+              onChange={handleFileChange}
+              className="block w-full text-sm text-gray-600 dark:text-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-purple-100 hover:file:bg-purple-200 dark:file:bg-purple-600 dark:hover:file:bg-purple-500 focus:outline-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white w-full py-3 rounded-xl hover:from-purple-600 hover:to-pink-600 focus:ring-2 focus:ring-purple-600 transition-all duration-300 dark:from-purple-700 dark:to-pink-600"
+          >
+            Update Information
+          </button>
+        </form>
+      </div>
+    </div>
 
   
   

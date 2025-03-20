@@ -6,7 +6,7 @@ import Footer from '../component/Footer'
 
 export const MainLayout = () => {
   return (
-    <div>
+    <div className='josefin-sans-font'>
 
         <NavBar></NavBar>
         <Outlet></Outlet>

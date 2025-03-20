@@ -8,3 +8,12 @@
     color: #0000; /* Tailwind's text-gray-100 */
   }
 
+  
+
+.josefin-sans-font {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+

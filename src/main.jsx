@@ -27,6 +27,9 @@ import Mytransection from './routes/Mytransection.jsx';
 import Alltransection from './routes/Alltransection.jsx';
 import Adminroute from './routes/Adminroute.jsx';
 import UserRoute from './routes/UserRoute.jsx';
+import AboutUs from './routes/AboutUs.jsx';
+import MyRevenue from './routes/MyRevenue.jsx';
+import ContactUs from './routes/ContactUs.jsx';
 
 
 
@@ -50,6 +53,14 @@ const router = createBrowserRouter([
       {
         path:"/register",
         element:<Register></Register>
+      },
+      {
+        path:"/aboutus",
+        element:<AboutUs></AboutUs>
+      },
+      {
+        path:"/contactus",
+        element:<ContactUs></ContactUs>
       }
     ]
     
@@ -65,7 +76,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/dashboard/addrevenue",
-        element:<Adminroute><AddRevenue></AddRevenue></Adminroute>
+        element:<AddRevenue></AddRevenue>
       },
       {
         path:"/dashboard/managerevenue",
@@ -77,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/dashboard/updaterevenue/:id",
-        element:<Adminroute><UpdateRevenue></UpdateRevenue></Adminroute>
+        element:<UpdateRevenue></UpdateRevenue>
       },
       {
         path:"/dashboard/alltransection",
@@ -94,6 +105,10 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/mytransection",
         element:<Mytransection></Mytransection>
+      },
+      {
+        path:"/dashboard/myrevenue",
+        element:<MyRevenue></MyRevenue>
       }
     ]
     

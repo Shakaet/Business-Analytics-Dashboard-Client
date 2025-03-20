@@ -1,16 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Context } from "../provider/AuthProvider";
 
-const fetchUsers = async () => {
-  const response = await axios.get("http://localhost:3000/revenue");
-  return response?.data;
-};
 
-const ManageRevenue = () => {
+
+const MyRevenue = () => {
+
+    let {user}=useContext(Context)
+
+
+    const fetchUsers = async () => {
+        const response = await axios.get(`http://localhost:3000/revenue/${user?.email}`);
+        return response?.data;
+      };
   const { data: revenue = [], refetch } = useQuery({
     queryKey: ["revenue"],
     queryFn: fetchUsers,
@@ -42,7 +48,7 @@ const ManageRevenue = () => {
 
   if (revenue.length === 0) {
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="flex justify-center items-center h-screen ">
         <div className="text-center p-6 bg-white rounded-lg shadow-lg">
           <FaExclamationTriangle className="text-yellow-500 text-5xl mb-4" />
           <h2 className="text-xl font-semibold text-gray-700">Oops! No revenue found here.</h2>
@@ -54,7 +60,7 @@ const ManageRevenue = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-semibold mb-4">Manage Revenue</h2>
+      <h2 className="text-2xl font-bold mb-4">My Revenue</h2>
       <div className="hidden md:block overflow-x-auto">
         <table className="table-auto w-full border border-gray-300 text-sm md:text-base">
           <thead className="border-2 border-black">
@@ -119,4 +125,4 @@ const ManageRevenue = () => {
   );
 };
 
-export default ManageRevenue;
+export default MyRevenue;

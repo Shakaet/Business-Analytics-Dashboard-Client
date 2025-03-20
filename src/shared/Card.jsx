@@ -1,5 +1,6 @@
 // Card.js
 import React from 'react';
+import img from "../assets/img.jpg"
 
 const Card = ({ title, count, icon }) => {
   return (

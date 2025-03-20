@@ -2,7 +2,7 @@ import React, { useContext } from "react";
  
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../provider/AuthProvider";
-import ThemeToggle from "../shared/ThemeToggle";
+
 
 export const NavBar = () => {
   const { user, signOuts } = useContext(Context); 
@@ -54,6 +54,12 @@ export const NavBar = () => {
           <li>
             <Link to="/dashboard" className="text-white hover:text-gray-300">Dashboard</Link>
           </li>
+          <li>
+        <Link to="/aboutus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">About Us</Link>
+      </li>
+      <li>
+        <Link to="/contactus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Contact Us</Link>
+      </li>
         </>
       </ul>
     </div>
@@ -68,6 +74,7 @@ export const NavBar = () => {
       <li>
         <Link to="/" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Home</Link>
       </li>
+      
 
       <>
         <li>
@@ -76,15 +83,19 @@ export const NavBar = () => {
         <li>
           <Link to="/dashboard" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Dashboard</Link>
         </li>
+        <li>
+        <Link to="/aboutus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">About Us</Link>
+      </li>
+      <li>
+        <Link to="/contactus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Contact Us</Link>
+      </li>
       </>
     </ul>
   </div>
 
   {/* Navbar End */}
   <div className="navbar-end">
-    <div className="mr-5">
-      <ThemeToggle />
-    </div>
+    
     {user ? (
       <div className="dropdown dropdown-end">
         <div tabIndex={0} role="button" className="flex items-center gap-2 text-white">
@@ -102,7 +113,7 @@ export const NavBar = () => {
           <li>
             <button
               onClick={handleLogout}
-              className="text-red-600 text-xl hover:bg-gray-200 p-2 rounded-md w-full text-left"
+              className="text-white text-lg hover:bg-gray-200 p-2 rounded-md w-full text-left"
             >
               Logout
             </button>

@@ -55,14 +55,15 @@ const ManageUser = () => {
 
   return (
     <div className="p-4  rounded-lg">
+       <h2 className="text-2xl font-bold mb-4">Total User: {users.length}</h2>
       {/* Table for larger screens */}
       <div className="overflow-x-auto hidden lg:flex">
         <table className="table w-full">
           {/* Head */}
-          <thead>
-            <tr className="text-black">
-              <th>Name</th>
-              <th>Role</th>
+          <thead className=''>
+            <tr className="text-black border-2 border-black">
+              <th className=' border-2 border-black'>Name</th>
+              <th className=' border-2 border-black'>Role</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -70,8 +71,8 @@ const ManageUser = () => {
           {/* Body */}
           <tbody>
             {users.map((user) => (
-              <tr key={user._id} className="text-black">
-                <td>
+              <tr key={user._id} className="text-black  border-2 border-black">
+                <td className=' border-2 border-black'>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
@@ -85,7 +86,7 @@ const ManageUser = () => {
                   </div>
                 </td>
 
-                <td>
+                <td className=' border-2 border-black'>
                   <select
                     value={user.role}
                     onChange={(e) => handleRoleChange(user._id, e.target.value)}
@@ -113,7 +114,7 @@ const ManageUser = () => {
       {/* Responsive Card format for mobile devices */}
       <div className="lg:hidden grid grid-cols-1 gap-4">
         {users.map((user) => (
-          <div key={user._id} className="bg-gray-500 shadow-md p-4 rounded-lg">
+          <div key={user._id} className="bg-amber-400  shadow-md p-4 rounded-lg">
             <div className="flex items-center gap-3">
               <div className="avatar">
                 <div className="mask mask-squircle h-12 w-12">

@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Context } from "../provider/AuthProvider";
+import useAdmin from "../assets/hook/useAdmin";
 
 const AddRevenue = () => {
+
+  // 
+  
+  let [isAdmin]= useAdmin()
+  console.log(isAdmin)
+
+  let {user}= useContext(Context)
 
     let link= useNavigate()
   const [formData, setFormData] = useState({
     month: "",
     income: "",
     expense: "",
+    email:user?.email
   });
 
  
@@ -41,7 +51,15 @@ const AddRevenue = () => {
     try {
       await axios.post("http://localhost:3000/revenue", formData);
       toast.success("Revenue data added successfully!");
-      link("/dashboard/managerevenue")
+
+      if(isAdmin){
+        link("/dashboard/managerevenue")
+
+      }
+      else{
+        link("/dashboard/myrevenue")
+      }
+      
       
       setFormData({ month: "", income: "", expense: "" }); // Clear form
     } catch (error) {
@@ -52,7 +70,7 @@ const AddRevenue = () => {
 
   return (
     <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md mt-5">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Add Revenue</h2>
+      <h2 className="text-2xl  text-gray-800 mb-4 text-center font-extrabold">Add Revenue</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         
         {/* Month Select */}
@@ -103,7 +121,7 @@ const AddRevenue = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-black py-2 rounded-md hover:bg-blue-700 transition"
+          className="w-full font-extrabold bg-gray-900 text-white py-2 rounded-md hover:bg-blue-700 transition"
         >
           Add Revenue
         </button>
