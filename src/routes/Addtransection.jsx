@@ -76,31 +76,31 @@ const AddTransaction = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen ">
-      <div className="w-full max-w-lg bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl  text-center mb-6 text-gray-900 font-extrabold">Add Transaction</h2>
+      <div className={`w-full max-w-lg ${darkMode ? 'bg-gray-900 text-white' : 'bg-white dark:bg-gray-800'} p-8 rounded-xl shadow-lg`}>
+        <h2 className={`text-2xl  text-center mb-6 ${darkMode ? ' text-white' : 'text-gray-800'}  font-extrabold`}>Add Transaction</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Fixed User Name */}
           <div>
-            <label className="block text-gray-700 font-medium">User Name</label>
+            <label className={`block ${darkMode ? ' text-yellow-600' : 'text-gray-800'} font-medium`}>User Name</label>
             <input
               type="text"
               name="userName"
               value={user?.displayName || "Guest User"}
-              className="w-full text-black mt-2 p-2 border rounded-lg bg-gray-200 "
+              className={`w-full text-black mt-2 p-2 ${darkMode ? ' text-yellow-600' : 'text-gray-800'} border rounded-lg  `}
               readOnly // Makes username fixed & uneditable
             />
           </div>
 
           {/* Amount */}
           <div>
-            <label className="block text-gray-700 font-medium">Amount</label>
+            <label className={`block ${darkMode ? ' text-yellow-600' : 'text-gray-800'} font-medium`}>Amount</label>
             <input
               type="number"
               name="amount"
               value={transaction.amount}
               onChange={handleChange}
-              className="w-full text-black mt-2 p-2 border rounded-lg focus:ring focus:ring-indigo-300"
+              className={`w-full ${darkMode ? ' text-yellow-600 font-bold' : 'text-black font-bold'} mt-2 p-2 border rounded-lg focus:ring focus:ring-indigo-300`}
               placeholder="Enter amount"
               required
             />
@@ -108,12 +108,12 @@ const AddTransaction = () => {
 
           {/* Type */}
           <div>
-            <label className="block text-gray-700 font-medium">Type</label>
+            <label className={`block ${darkMode ? ' text-yellow-600' : 'text-gray-800'} font-medium`}>Type</label>
             <select
               name="type"
               value={transaction.type}
               onChange={handleChange}
-              className="w-full mt-2 p-2 text-black border rounded-lg focus:ring focus:ring-indigo-300"
+              className={`w-full mt-2 p-2 ${darkMode ? ' text-yellow-600' : 'text-gray-800'} border rounded-lg focus:ring focus:ring-indigo-300`}
             >
               <option value="payment">Payment</option>
               <option value="refund">Refund</option>
@@ -122,12 +122,12 @@ const AddTransaction = () => {
 
           {/* Status */}
           <div>
-            <label className="block text-black font-medium">Status</label>
+            <label className={`block ${darkMode ? ' text-yellow-600' : 'text-gray-800'}  font-medium`}>Status</label>
             <select
               name="status"
               value={transaction.status}
               onChange={handleChange}
-              className="w-full mt-2 p-2 text-black border rounded-lg focus:ring focus:ring-indigo-300"
+              className={`w-full mt-2 p-2 ${darkMode ? ' text-yellow-600' : 'text-gray-800'} border rounded-lg focus:ring focus:ring-indigo-300`}
             >
               <option value="completed">Completed</option>
               <option value="pending">Pending</option>
@@ -137,7 +137,7 @@ const AddTransaction = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gray-900 text-white font-bold py-2 rounded-lg hover:bg-indigo-700 transition duration-300"
+            className={`w-full ${darkMode ? ' text-white bg-yellow-600 broder-2 border-amber-100' : 'text-black bg-gray-400'}  font-bold py-2 rounded-lg hover:bg-indigo-700 transition duration-300`}
           >
             Add Transaction
           </button>

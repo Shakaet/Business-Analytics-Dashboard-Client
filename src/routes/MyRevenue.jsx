@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useContext } from "react";
-import { FaExclamationTriangle } from "react-icons/fa";
+import React, { useContext, useEffect, useState } from "react";
+import { FaExclamationTriangle, FaMoon, FaSun } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Context } from "../provider/AuthProvider";
@@ -46,6 +46,30 @@ const MyRevenue = () => {
     });
   };
 
+  // Theme State
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark'
+  );
+
+  // Toggle Theme
+  const toggleTheme = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem('theme', newMode ? 'dark' : 'light');
+      return newMode;
+    });
+  };
+
+  
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+
   if (revenue.length === 0) {
     return (
       <div className="flex justify-center items-center h-screen ">
@@ -60,11 +84,11 @@ const MyRevenue = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">My Revenue</h2>
+      <h2 className={`text-2xl ${darkMode ? ' text-gray-900' : 'text-blue-600'} font-bold mb-4`}>My Revenue: {revenue?.length}</h2>
       <div className="hidden md:block overflow-x-auto">
         <table className="table-auto w-full border border-gray-300 text-sm md:text-base">
           <thead className="border-2 border-black">
-            <tr className="bg-gray-200 text-black text-base md:text-lg">
+            <tr className={` ${darkMode ? 'text-white bg-black' : 'bg-gray-200 text-black'}  text-base md:text-lg`}>
               <th className="px-3 py-2 border-2 border-r-2">#</th>
               <th className="px-3 py-2 border-2 border-r-2">Month</th>
               <th className="px-3 py-2 border-2 border-r-2">Income ($)</th>
@@ -72,9 +96,9 @@ const MyRevenue = () => {
               <th className="px-3 py-2 border-2 border-r-2">Actions</th>
             </tr>
           </thead>
-          <tbody className=" border-b-2 border-l-2 border-r-2 border-black">
+          <tbody className={`border-b-2 border-l-2 border-r-2 ${darkMode ? 'border-2 border-white' : 'border-2 border-black'} `}>
             {revenue.map((entry, index) => (
-              <tr key={entry._id} className="border-b text-center text-black">
+              <tr key={entry._id} className={`border-b-2 text-center ${darkMode ? ' text-white bg-black' : 'text-black bg-gray-300'}`}>
                 <th className="px-3 py-2 border-2 border-r-2">{index + 1}</th>
                 <td className="px-3 py-2 border-2 border-r-2">{entry.month}</td>
                 <td className="px-3 py-2 border-2 border-r-2">{entry.income}</td>
@@ -96,14 +120,16 @@ const MyRevenue = () => {
               </tr>
             ))}
           </tbody>
+                  
+    
         </table>
       </div>
       <div className="md:hidden flex flex-col gap-4">
         {revenue.map((entry, index) => (
-          <div key={entry._id} className="p-4 bg-amber-400 shadow-lg rounded-md">
-            <h3 className="text-lg font-bold text-black">{entry.month}</h3>
-            <p className=" text-black font-bold">Income: ${entry.income}</p>
-            <p className="text-black font-bold">Expenses: ${entry.expense}</p>
+          <div key={entry._id} className={`p-4 ${darkMode ? ' bg-black text-white' : ' bg-amber-400 text-black'} shadow-lg rounded-md`}>
+            <h3 className="text-lg font-bold ">{entry.month}</h3>
+            <p className=" font-bold">Income: ${entry.income}</p>
+            <p className=" font-bold">Expenses: ${entry.expense}</p>
             <div className="flex justify-between mt-2">
               <Link
                 to={`/dashboard/updaterevenue/${entry._id}`}
@@ -119,8 +145,19 @@ const MyRevenue = () => {
               </button>
             </div>
           </div>
+          
         ))}
+        
+        
       </div>
+      <div className="flex justify-end mb-6 fixed bottom-2 right-6 z-50">
+          <button
+            onClick={toggleTheme}
+            className="p-3 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 rounded-full shadow-lg transition duration-300"
+          >
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
+        </div>
     </div>
   );
 };
