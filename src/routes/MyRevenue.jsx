@@ -14,7 +14,7 @@ const MyRevenue = () => {
 
 
     const fetchUsers = async () => {
-        const response = await axios.get(`http://localhost:3000/revenue/${user?.email}`);
+        const response = await axios.get(`https://business-dashboard-server.vercel.app/revenue/${user?.email}`);
         return response?.data;
       };
   const { data: revenue = [], refetch } = useQuery({
@@ -34,7 +34,7 @@ const MyRevenue = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/revenue/${id}`)
+          .delete(`https://business-dashboard-server.vercel.app/revenue/${id}`)
           .then(() => {
             refetch();
             Swal.fire("Deleted!", "The item has been deleted.", "success");

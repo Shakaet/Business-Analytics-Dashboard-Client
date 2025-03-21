@@ -13,7 +13,7 @@ const useU = () => {
 
 
     const fetchUsers = async () => {
-        const response = await axios.get(`http://localhost:3000/users/user/${user?.email}`);
+        const response = await axios.get(`https://business-dashboard-server.vercel.app/users/user/${user?.email}`);
         return response.data?.user;
       };
 

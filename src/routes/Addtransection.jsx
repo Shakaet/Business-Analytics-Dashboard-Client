@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Context } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const AddTransaction = () => {
   const { user } = useContext(Context);
@@ -21,6 +22,30 @@ const AddTransaction = () => {
     setTransaction({ ...transaction, [e.target.name]: e.target.value });
   };
 
+  // Theme State
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark'
+  );
+
+  // Toggle Theme
+  const toggleTheme = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem('theme', newMode ? 'dark' : 'light');
+      return newMode;
+    });
+  };
+
+  
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,10 +55,15 @@ const AddTransaction = () => {
       date: new Date(), 
     };
 
+
+    
+
+
+
     // console.log(newTransaction);
 
     try {
-      const response = await axios.post("http://localhost:3000/transactions", newTransaction);
+      const response = await axios.post("https://business-dashboard-server.vercel.app/transactions", newTransaction);
       toast.success("Transection added successfully!");
       nav("/dashboard/mytransection")
     //   console.log("Transaction added:", response.data);
@@ -112,6 +142,16 @@ const AddTransaction = () => {
             Add Transaction
           </button>
         </form>
+
+                {/* Theme Toggle Button */}
+     <div className="flex justify-end mb-6 fixed bottom-2 right-6 z-50">
+          <button
+            onClick={toggleTheme}
+            className="p-3 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 rounded-full shadow-lg transition duration-300"
+          >
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
+        </div>
       </div>
     </div>
   );

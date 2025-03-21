@@ -10,7 +10,7 @@ const Mytransection = () => {
   let { user } = useContext(Context);
 
   const fetchUsers = async () => {
-    const response = await axios.get(`http://localhost:3000/transection/${user?.email}`);
+    const response = await axios.get(`https://business-dashboard-server.vercel.app/transection/${user?.email}`);
     return response?.data;
   };
 
@@ -21,7 +21,7 @@ const Mytransection = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.patch(`http://localhost:3000/transactions/${id}`, { status: newStatus });
+      await axios.patch(`https://business-dashboard-server.vercel.app/transactions/${id}`, { status: newStatus });
       refetch();
       toast.success('Status updated successfully!');
     } catch (error) {
@@ -41,7 +41,7 @@ const Mytransection = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/tansection/${id}`)
+        axios.delete(`https://business-dashboard-server.vercel.app/tansection/${id}`)
           .then(response => {
             refetch();
             Swal.fire('Deleted!', 'The item has been deleted.', 'success');

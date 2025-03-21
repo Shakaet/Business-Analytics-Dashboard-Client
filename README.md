@@ -21,22 +21,22 @@ Follow these instructions to set up and run **DataPulse** locally.
 
 ##  API Documentation
 
-  ### POST   http://localhost:3000/revenue
-  ### POST   http://localhost:3000/transactions
-  ### GET    http://localhost:3000/alltransection
-  ### DELETE http://localhost:3000/revenue/id
-  ### GET    http://localhost:3000/revenue
-  ### PATCH  http://localhost:3000/revenue/id
-  ### GET    http://localhost:3000/revenue/id
-  ### DELETE http://localhost:3000/tansection/id
-  ### PATCH  http://localhost:3000/transactions/id
-  ### GET    http://localhost:3000/users/admin/email
-  ### GET    http://localhost:3000/transection/email
-  ### GET    http://localhost:3000/users/user/email
-  ### DELETE http://localhost:3000/users/id
-  ### PATCH  http://localhost:3000/users/id
-  ### GET    http://localhost:3000/users
-  ### POST   http://localhost:3000/users
+  ### POST   https://business-dashboard-server.vercel.app/revenue
+  ### POST   https://business-dashboard-server.vercel.app/transactions
+  ### GET    https://business-dashboard-server.vercel.app/alltransection
+  ### DELETE https://business-dashboard-server.vercel.app/revenue/id
+  ### GET    https://business-dashboard-server.vercel.app/revenue
+  ### PATCH  https://business-dashboard-server.vercel.app/revenue/id
+  ### GET    https://business-dashboard-server.vercel.app/revenue/id
+  ### DELETE https://business-dashboard-server.vercel.app/tansection/id
+  ### PATCH  https://business-dashboard-server.vercel.app/transactions/id
+  ### GET    https://business-dashboard-server.vercel.app/users/admin/email
+  ### GET    https://business-dashboard-server.vercel.app/transection/email
+  ### GET    https://business-dashboard-server.vercel.app/users/user/email
+  ### DELETE https://business-dashboard-server.vercel.app/users/id
+  ### PATCH  https://business-dashboard-server.vercel.app/users/id
+  ### GET    https://business-dashboard-server.vercel.app/users
+  ### POST   https://business-dashboard-server.vercel.app/users
  
 
 
@@ -68,4 +68,4 @@ For Backend run:
 
 node index.js/nodemon index.js
 
-run the backend http://localhost:3000/
+run the backend https://business-dashboard-server.vercel.app/

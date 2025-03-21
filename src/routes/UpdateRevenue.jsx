@@ -31,7 +31,7 @@ const UpdateRevenue = () => {
   useEffect(() => {
     const fetchRevenueData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/revenue/${id}`);
+        const response = await axios.get(`https://business-dashboard-server.vercel.app/revenue/${id}`);
         setFormData(response.data); // Set formData with fetched data
       } catch (error) {
         toast.error("Failed to fetch revenue data.");
@@ -60,7 +60,7 @@ const UpdateRevenue = () => {
     // console.log(formData);
 
     try {
-      await axios.patch(`http://localhost:3000/revenue/${id}`, formData);
+      await axios.patch(`https://business-dashboard-server.vercel.app/revenue/${id}`, formData);
       
       toast.success("Revenue data updated successfully!");
 
@@ -92,7 +92,7 @@ const UpdateRevenue = () => {
             value={formData.month}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 text-black border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">Select Month</option>
             {months.map((m, index) => (
@@ -109,7 +109,7 @@ const UpdateRevenue = () => {
             name="income"
             value={formData.income}
             onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border text-black  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter income amount"
           />
         </div>
@@ -122,7 +122,7 @@ const UpdateRevenue = () => {
             name="expense"
             value={formData.expense}
             onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 text-black  border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter expense amount"
           />
         </div>

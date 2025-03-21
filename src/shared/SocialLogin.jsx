@@ -28,7 +28,7 @@ const SocialLogin = () => {
                 role:"user"
 
             }
-            axios.post("http://localhost:3000/users",usersData)
+            axios.post("https://business-dashboard-server.vercel.app/users",usersData)
             .then((res)=>{
                 if(res.data.insertedId){
                     // alert("user added")

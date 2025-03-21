@@ -45,15 +45,7 @@ const DashboardHome = () => {
     <div className={`min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'} rounded-3xl p-8 md:p-10 transition-all duration-300`}>
       <div className="container mx-auto">
 
-        {/* Theme Toggle Button */}
-        <div className="flex justify-end mb-6">
-          <button
-            onClick={toggleTheme}
-            className="p-3 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 rounded-full shadow-lg transition duration-300"
-          >
-            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
-          </button>
-        </div>
+     
 
         {/* Cards Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
@@ -82,6 +74,7 @@ const DashboardHome = () => {
             cardColor="bg-gradient-to-r from-purple-500 to-pink-500"
           />
         </div>
+        
 
         {/* Pie Charts Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-8">
@@ -118,7 +111,17 @@ const DashboardHome = () => {
             <ProfitLossGraph data={revenue} />
           </div>
         </div>
+              {/* Theme Toggle Button */}
+     <div className="flex justify-end mb-6 fixed bottom-2 right-6 z-50">
+          <button
+            onClick={toggleTheme}
+            className="p-3 bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 rounded-full shadow-lg transition duration-300"
+          >
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
+        </div>
       </div>
+      
     </div>
   );
 };

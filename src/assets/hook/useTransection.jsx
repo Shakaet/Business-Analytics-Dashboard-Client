@@ -11,7 +11,7 @@ const useTransection = () => {
 
 
     const fetchUsers = async () => {
-        const response = await axios.get("http://localhost:3000/alltransection");
+        const response = await axios.get("https://business-dashboard-server.vercel.app/alltransection");
         return response?.data;
       };
 

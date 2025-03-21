@@ -11,7 +11,7 @@ const useRevenue = () => {
 
 
     const fetchUsers = async () => {
-        const response = await axios.get("http://localhost:3000/revenue");
+        const response = await axios.get("https://business-dashboard-server.vercel.app/revenue");
         return response?.data;
       };
 
