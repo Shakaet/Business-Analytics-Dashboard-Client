@@ -119,7 +119,7 @@ export const NavBar = () => {
           <li>
             <button
               onClick={handleLogout}
-              className="text-white text-lg hover:bg-gray-200 p-2 rounded-md w-full text-left"
+              className="text-white text-lg hover:bg-gray-500 p-2 rounded-md w-full text-left"
             >
               Logout
             </button>

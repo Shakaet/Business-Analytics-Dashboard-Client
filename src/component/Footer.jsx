@@ -10,10 +10,10 @@ const Footer = () => {
     </div>
 
     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center sm:items-start mb-6 sm:mb-0">
-      <a href="/" className="hover:text-indigo-400 transition-colors">About</a>
-      <a href="/" className="hover:text-indigo-400 transition-colors">Services</a>
-      <a href="/" className="hover:text-indigo-400 transition-colors">Privacy Policy</a>
-      <a href="/" className="hover:text-indigo-400 transition-colors">Contact</a>
+      <a href="/aboutus" className="hover:text-indigo-400 transition-colors">About Us</a>
+      <a href="/dashboard" className="hover:text-indigo-400 transition-colors">Dashboard</a>
+      <a href="/feedback" className="hover:text-indigo-400 transition-colors">Users Feedback</a>
+      <a href="/contactus" className="hover:text-indigo-400 transition-colors">Contact Us</a>
     </div>
 
     <div className="text-center sm:text-right">
