@@ -28,7 +28,7 @@ const ContactUs = () => {
     }
   }, [darkMode]);
   return (
-    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center p-6 bg-gradient-to-r from-blue-100 to-indigo-200 dark:from-gray-900 dark:to-black">
+    <div className={`min-h-screen flex flex-col md:flex-row items-center justify-center p-6 ${darkMode ? 'bg-[#111827]' : 'bg-gray-300'}  `}>
       {/* Left Side - Contact Image */}
       <div className="md:w-1/2 flex justify-center items-center mt-15">
         <img

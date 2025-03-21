@@ -58,6 +58,9 @@ export const NavBar = () => {
         <Link to="/aboutus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">About Us</Link>
       </li>
       <li>
+        <Link to="/feedback" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Users Feedback</Link>
+      </li>
+      <li>
         <Link to="/contactus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Contact Us</Link>
       </li>
         </>
@@ -85,6 +88,9 @@ export const NavBar = () => {
         </li>
         <li>
         <Link to="/aboutus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">About Us</Link>
+      </li>
+      <li>
+        <Link to="/feedback" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Users Feedback</Link>
       </li>
       <li>
         <Link to="/contactus" className="text-white font-semibold hover:text-gray-300 transition-colors duration-200">Contact Us</Link>

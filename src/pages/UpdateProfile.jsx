@@ -84,7 +84,7 @@ const UpdateProfile = () => {
 
 
   return (
-    <div className="min-h-screen gap-24 flex flex-col md:flex-row items-center justify-center p-6 bg-gradient-to-r from-blue-100 to-indigo-200 dark:from-gray-800 dark:to-black">
+    <div className={`min-h-screen gap-24 flex flex-col md:flex-row items-center justify-center p-6 ${darkMode ? 'bg-[#111827]' : 'bg-gray-300'}`}>
       
       <div>
 

@@ -29,7 +29,7 @@ const AboutUs = () => {
   }, [darkMode]);
 
   return (
-    <section className={` ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  py-16 px-6 md:px-12`}>
+    <section className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}  py-16 px-6 md:px-12`}>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

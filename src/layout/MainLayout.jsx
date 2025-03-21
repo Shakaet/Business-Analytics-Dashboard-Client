@@ -9,7 +9,9 @@ export const MainLayout = () => {
     <div className='josefin-sans-font'>
 
         <NavBar></NavBar>
+        <div className='min-h-screen'>
         <Outlet></Outlet>
+        </div>
         <Footer></Footer>
         
     </div>

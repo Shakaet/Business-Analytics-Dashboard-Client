@@ -30,6 +30,8 @@ import UserRoute from './routes/UserRoute.jsx';
 import AboutUs from './routes/AboutUs.jsx';
 import MyRevenue from './routes/MyRevenue.jsx';
 import ContactUs from './routes/ContactUs.jsx';
+import Addfeedback from './routes/Addfeedback.jsx';
+import Feedback from './pages/Feedback.jsx';
 
 
 
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
       {
         path:"/contactus",
         element:<ContactUs></ContactUs>
+      },
+      {
+        path:"/feedback",
+        element:<Feedback></Feedback>
       }
     ]
     
@@ -109,6 +115,10 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/myrevenue",
         element:<MyRevenue></MyRevenue>
+      },
+      {
+        path:"/dashboard/sendfeedback",
+        element:<Addfeedback></Addfeedback>
       }
     ]
     
