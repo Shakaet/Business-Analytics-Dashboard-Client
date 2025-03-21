@@ -79,7 +79,7 @@ const Mytransection = () => {
 
   if (mytransection.length === 0) {
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="flex justify-center items-center h-screen">
         <div className="text-center p-6 bg-white rounded-lg shadow-lg">
           <FaExclamationTriangle className="text-yellow-500 text-5xl mb-4" />
           <h2 className="text-xl font-semibold text-gray-700">Oops! No transactions found here.</h2>

@@ -45,7 +45,7 @@ const UserRoleGraph = ({ users }) => {
 
   return (
     <div className="w-full p-4 bg-white rounded-lg shadow-md">
-      <h3 className="text-xl font-semibold mb-4 text-center">User Role Distribution</h3>
+      <h3 className="text-xl font-semibold mb-4 text-center text-black">User Role Distribution</h3>
       <Pie data={chartData} options={options} />
     </div>
   );

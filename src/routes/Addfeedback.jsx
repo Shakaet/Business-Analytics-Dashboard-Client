@@ -44,7 +44,7 @@ const Addfeedback = () => {
     }
 
     try {
-      await axios.post("http://localhost:3000/addfeedback", formData);
+      await axios.post("https://business-dashboard-server.vercel.app/addfeedback", formData);
       toast.success("Feedback submitted successfully!");
       navigate("/feedback");
       setFormData({ feedback: "", rating: 0 });

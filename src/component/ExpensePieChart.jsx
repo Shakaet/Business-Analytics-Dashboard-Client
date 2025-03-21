@@ -40,7 +40,7 @@ const ExpensePieChart = ({ data }) => {
 
   return (
     <div className="w-full p-4 bg-white rounded-lg shadow-lg">
-      <h3 className="text-xl font-semibold text-center mb-4">Expense Breakdown</h3>
+      <h3 className="text-xl font-semibold text-center mb-4 text-black">Expense Breakdown</h3>
       <Pie data={chartData} options={options} />
     </div>
   );

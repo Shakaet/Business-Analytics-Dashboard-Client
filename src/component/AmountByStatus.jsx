@@ -17,7 +17,7 @@ const AmountByStatus = ({ transactions }) => {
 
   return (
     <div className="p-5 bg-white shadow-md rounded-lg">
-      <h2 className="text-lg font-semibold text-gray-700 mb-3 text-center">Amount by Status</h2>
+      <h2 className="text-lg font-semibold text-black mb-3 text-center">Amount by Status</h2>
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <Pie data={statusData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} fill="#82ca9d" label>

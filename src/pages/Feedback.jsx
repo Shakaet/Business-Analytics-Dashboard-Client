@@ -6,7 +6,7 @@ import LoadingSpinner from "../component/LoadingSpinner";
 import { Link } from "react-router-dom";
 
 const fetchUsers = async () => {
-  const response = await axios.get("http://localhost:3000/allfeedback");
+  const response = await axios.get("https://business-dashboard-server.vercel.app/allfeedback");
   return response.data;
 };
 
